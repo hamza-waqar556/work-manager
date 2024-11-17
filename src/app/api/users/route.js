@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export function GET(req) {
+export function GET(request) {
   const users = [
     {
       name: "Hamza",
@@ -28,7 +28,7 @@ export function GET(req) {
   return NextResponse.json(users);
 }
 
-export function DELETE(req) {
+export function DELETE(request) {
   return NextResponse.json(
     {
       message: "User deleted successfully!",
@@ -36,4 +36,24 @@ export function DELETE(req) {
     },
     { status: 201, statusText: "status Text" }
   );
+}
+
+
+export async function POST(request) {
+
+  // console.log( 'method ' ,await request.method);
+  // console.log( 'headers ' ,await request.headers);
+  // console.log( 'body ' ,await request.body);
+  // console.log( 'url ' ,await request.url);
+  // console.log( 'cookies ' ,await request.cookies);
+  // console.log( 'searchParams ' ,await request.nextUrl.searchParams);
+  
+    const jsonData = await request.json();
+    const textData = await request.text();
+
+    return NextResponse.json({
+      message: "POST API WORKING!",
+      status: true,
+    })
+  
 }
