@@ -1,4 +1,7 @@
+import { connectDb } from "@/helpers/db";
 import { NextResponse } from "next/server";
+
+connectDb();
 
 export function GET(request) {
   const users = [
@@ -38,22 +41,19 @@ export function DELETE(request) {
   );
 }
 
-
 export async function POST(request) {
-
   // console.log( 'method ' ,await request.method);
   // console.log( 'headers ' ,await request.headers);
   // console.log( 'body ' ,await request.body);
   // console.log( 'url ' ,await request.url);
   // console.log( 'cookies ' ,await request.cookies);
   // console.log( 'searchParams ' ,await request.nextUrl.searchParams);
-  
-    const jsonData = await request.json();
-    const textData = await request.text();
 
-    return NextResponse.json({
-      message: "POST API WORKING!",
-      status: true,
-    })
-  
+  // const jsonData = await request.json();
+  // const textData = await request.text();
+
+  return NextResponse.json({
+    message: "POST API WORKING!",
+    status: true,
+  });
 }
